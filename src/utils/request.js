@@ -64,7 +64,7 @@ const request = extend({
 
 request.interceptors.request.use((url, options) => {
 
-  const token = 'hello'
+  const token = localStorage.getItem('access_token') || '';
   const headers = {
     Authorization: `Bearer ${token}`
   }

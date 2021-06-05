@@ -24,6 +24,13 @@ export default [
             routes: [
               {
                 path: '/',
+                redirect:'/dashboard'
+              },
+              {
+                path: '/dashboard',
+                component: '@/pages/DashBoard',
+                name:'dashboard',
+                icon:'PieChartOutlined'
               },
               {
                 component: './404',

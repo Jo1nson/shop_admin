@@ -12,34 +12,24 @@ const UserModel = {
         payload: response,
       });
     },
-
+//获取当前登录用户数据
     *fetchCurrent(_, { call, put }) {
-      const response = yield call(queryCurrent);
+      let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+
+      if(!userInfo) {
+        userInfo = yield call(queryCurrent);
+        localStorage.setItem('userInfo',JSON.stringify(userInfo))
+      }
+
       yield put({
         type: 'saveCurrentUser',
-        payload: response,
+        payload: userInfo,
       });
     },
   },
   reducers: {
     saveCurrentUser(state, action) {
       return { ...state, currentUser: action.payload || {} };
-    },
-
-    changeNotifyCount(
-      state = {
-        currentUser: {},
-      },
-      action,
-    ) {
-      return {
-        ...state,
-        currentUser: {
-          ...state.currentUser,
-          notifyCount: action.payload.totalCount,
-          unreadCount: action.payload.unreadCount,
-        },
-      };
     },
   },
 };
