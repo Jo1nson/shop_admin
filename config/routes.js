@@ -33,6 +33,12 @@ export default [
                 icon:'PieChartOutlined'
               },
               {
+                path: '/user',
+                component: '@/pages/User',
+                name:'user',
+                icon:'UserOutlined'
+              },
+              {
                 component: './404',
               },
             ],
