@@ -12,7 +12,8 @@ const Login = (props) => {
   useEffect(()=>{
     //如果已经登陆过，直接去首页
     const userInfo = localStorage.getItem('userInfo')
-    if(userInfo) history.replace('/')
+    console.log(userInfo);
+    // if(userInfo) history.replace('/')
   },[])
 
   const { submitting } = props;

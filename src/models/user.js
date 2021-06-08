@@ -18,7 +18,10 @@ const UserModel = {
 
       if(!userInfo) {
         userInfo = yield call(queryCurrent);
-        localStorage.setItem('userInfo',JSON.stringify(userInfo))
+        //判断是否获取到用户信息
+        if(userInfo.id !== undefined){
+          localStorage.setItem('userInfo',JSON.stringify(userInfo))
+        }
       }
 
       yield put({
