@@ -18,14 +18,14 @@ export async function isRecommend(goodsId){
   return request.patch(`/admin/goods/${goodsId}/recommend`)
 }
 
-export async function addGoods(params){
-  return request.post('/admin/goods',{params})
+export async function addGoods(data){
+  return request.post('/admin/goods',{data})
 }
 
 export async function showGoods(editId){
   return request.get(`/admin/goods/${editId}?include=category`)
 }
 
-export async function updateGoods(editId,params){
-  return request.put(`/admin/goods/${editId}`,{params})
+export async function updateGoods(editId,data){
+  return request.put(`/admin/goods/${editId}`,{data})
 }

@@ -1,9 +1,9 @@
 import request from '@/utils/request';
 //执行登录，获取token
-export async function fakeAccountLogin(params) {
+export async function fakeAccountLogin(data) {
   return request('/auth/login', {
     method: 'POST',
-    data: params,
+    data,
   });
 }
 
