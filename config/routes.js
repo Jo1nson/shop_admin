@@ -39,6 +39,12 @@ export default [
                 icon:'UserOutlined'
               },
               {
+                path: '/goods',
+                component: '@/pages/Goods',
+                name:'goods',
+                icon:'ShoppingOutlined'
+              },
+              {
                 component: './404',
               },
             ],
