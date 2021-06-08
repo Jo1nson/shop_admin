@@ -1,10 +1,10 @@
 import React,{useEffect, useState} from 'react';
 import ProForm, {ProFormText} from "@ant-design/pro-form";
 import {message, Modal, Skeleton } from "antd";
-import {updateUser,showUser,getUsers, lockUser, addUser} from '@/services/user'
+import {updateUser,showUser, addUser} from '@/services/user'
 
 const CreateOrEdit = (props) => {
-  //将表单初始化的值设置成状态，在编辑的时候，获取数据之后，修改状态，状态改变，组件重新渲染，骨架屏消失
+  // 将表单初始化的值设置成状态，在编辑的时候，获取数据之后，修改状态，状态改变，组件重新渲染，骨架屏消失
   const [initialValues, setInitialValues] = useState(undefined)
 
   const {isModalVisible} = props
@@ -25,14 +25,14 @@ const CreateOrEdit = (props) => {
 
   const handleSubmit =async values =>{
     let response = {}
-    if(editId === undefined){//执行添加
+    if(editId === undefined){// 执行添加
       response = await addUser(values)
-    } else {//执行编辑
+    } else {// 执行编辑
       response = await updateUser(editId,values)
     }
     if (response.status === undefined){
       message.success(`${type}成功`)
-      //刷新表格
+      // 刷新表格
       actionRef.current.reload();
       isShowModal(false)
     }

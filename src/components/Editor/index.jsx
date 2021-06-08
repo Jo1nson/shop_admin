@@ -17,11 +17,11 @@ export default class EditorDemo extends React.Component {
 
   handleEditorChange = (editorState) => {
     this.setState({ editorState })
-    //要判断输入的内容，如果有内容，设置输入的内容，如果没有内容，设置成空字符串。
-    //details = <p></p>  details=''
+    // 要判断输入的内容，如果有内容，设置输入的内容，如果没有内容，设置成空字符串。
+    // details = <p></p>  details=''
     if(!editorState.isEmpty()){
       const content = editorState.toHTML()
-      //调用父组件的函数，将编辑器输入的内容传递回去
+      // 调用父组件的函数，将编辑器输入的内容传递回去
       this.props.setDetails(content)
     } else {
       this.props.setDetails('')
@@ -38,7 +38,7 @@ export default class EditorDemo extends React.Component {
   }
 
   render () {
-    //自定义组件
+    // 自定义组件
     const extendControls = [
       {
         key: 'antd-uploader',

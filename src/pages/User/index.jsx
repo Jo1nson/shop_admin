@@ -1,14 +1,13 @@
 import React,{useRef, useState} from 'react';
 import {PageContainer} from '@ant-design/pro-layout'
 import ProTable from '@ant-design/pro-table'
-import {Button, Avatar,Switch,message,Modal} from 'antd'
+import {Button, Avatar,Switch,message} from 'antd'
 import {PlusOutlined, UserOutlined} from '@ant-design/icons'
-import {getUsers, lockUser, addUser} from '@/services/user'
-import ProForm, { ProFormText } from '@ant-design/pro-form';
+import {getUsers, lockUser} from '@/services/user'
 import CreateOrEdit from './components/CreateOrEdit'
 
 const Index = () => {
-  //表格的ref,便于自定义操作表格
+  // 表格的ref,便于自定义操作表格
   const actionRef = useRef()
 
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -28,7 +27,7 @@ const Index = () => {
     if (response.status === undefined) message.success("操作成功！")
   }
 
-  //控制模态框显示与隐藏
+  // 控制模态框显示与隐藏
   const isShowModal = (show, id = undefined) => {
     setEditId(id)
     setIsModalVisible(show)
@@ -81,12 +80,9 @@ const Index = () => {
         actionRef={actionRef}
         request={async (params = {}) =>getData(params)}
         rowKey="id"
-        search={{
-          labelWidth: 'auto',
+        search={{labelWidth: 'auto',
       }}
-        pagination={{
-          pageSize: 10,
-      }}
+        pagination={{pageSize: 10,}}
         dateFormatter="string"
         headerTitle="用户列表"
         toolBarRender={() => [
@@ -95,8 +91,7 @@ const Index = () => {
           </Button>
       ]}
         />
-        //模态框隐藏的时候，不挂载组件；模态框显示的时候再挂载组件，这样是为了触发子组件的生命周期
-        isModalVisible ?
+      {isModalVisible ?
       <CreateOrEdit
         isModalVisible={isModalVisible}
         isShowModal={isShowModal}
@@ -106,21 +101,6 @@ const Index = () => {
           :''
       }
 
-      {/*  <Create*/}
-      {/*    isModalVisible={isModalVisible}*/}
-      {/*    isShowModal={isShowModal}*/}
-      {/*    actionRef={actionRef}*/}
-      {/*  />*/}
-      {/*{*/}
-      {/*  isModalVisibleEdit ?*/}
-      {/*    <Edit*/}
-      {/*      isModalVisible={isModalVisibleEdit}*/}
-      {/*      isShowModal={isShowModalEdit}*/}
-      {/*      actionRef={actionRef}*/}
-      {/*      editId={editId}*/}
-      {/*    />*/}
-      {/*    :''*/}
-      {/*}*/}
     </PageContainer>
   );
 };

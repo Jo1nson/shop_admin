@@ -3,9 +3,8 @@ import ProForm, {
   ProFormText,
   ProFormTextArea,
   ProFormDigit,
-  ProFormUploadButton
 } from "@ant-design/pro-form";
-import {message, Modal, Skeleton,Cascader,Image } from "antd";
+import {message, Modal, Skeleton,Cascader,Image, Button } from "antd";
 import {getCategory} from '@/services/category'
 import {addGoods,showGoods,updateGoods} from '@/services/goods'
 import AliyunOSSUpload from '@/components/AliyunOSSUpload'
@@ -13,11 +12,11 @@ import {UploadOutlined} from '@ant-design/icons'
 import Editor from '@/components/Editor'
 
 const CreateOrEdit = (props) => {
-  //将表单初始化的值设置成状态，在编辑的时候，获取数据之后，修改状态，状态改变，组件重新渲染，骨架屏消失
+  // 将表单初始化的值设置成状态，在编辑的时候，获取数据之后，修改状态，状态改变，组件重新渲染，骨架屏消失
   const [initialValues, setInitialValues] = useState(undefined)
   const [options, setOptions] = useState([])
 
-  //定义Form实例，用来操作表单
+  // 定义Form实例，用来操作表单
   const [formObj] = ProForm.useForm()
 
   const {isModalVisible} = props
@@ -46,14 +45,14 @@ const CreateOrEdit = (props) => {
 
   const handleSubmit =async values =>{
     let response = {}
-    if(editId === undefined){//执行添加
+    if(editId === undefined){// 执行添加
       response = await addGoods({...values, category_id:values.category_id[1]})
-    } else {//执行编辑
+    } else {// 执行编辑
       response = await updateGoods(editId,{...values, category_id:values.category_id[1]})
     }
     if (response.status === undefined){
       message.success(`${type}成功`)
-      //刷新表格
+      // 刷新表格
       actionRef.current.reload();
       isShowModal(false)
     }

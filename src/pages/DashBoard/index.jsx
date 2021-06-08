@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import { Statistic, Card, Row, Col} from 'antd';
 import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 import {fetchDashboard} from '@/services/dashboard'
+
 const DashBoard = () => {
-  //定义组件状态，状态改变
+  // 定义组件状态，状态改变
   let [data, setData] = useState({})
 
   useEffect(async () =>{

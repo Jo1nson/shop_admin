@@ -1,7 +1,7 @@
 import React from 'react';
 import ProForm, {ProFormText} from "@ant-design/pro-form";
 import {message, Modal} from "antd";
-import {getUsers, lockUser, addUser} from '@/services/user'
+import { addUser} from '@/services/user'
 
 const Create = (props) => {
 
@@ -13,7 +13,7 @@ const Create = (props) => {
     const response = await addUser(values)
     if (response.status === undefined){
       message.success('添加成功')
-      //刷新表格
+      // 刷新表格
       actionRef.current.reload();
       isShowModal(false)
     }

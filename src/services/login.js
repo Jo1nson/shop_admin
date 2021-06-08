@@ -1,5 +1,5 @@
 import request from '@/utils/request';
-//执行登录，获取token
+// 执行登录，获取token
 export async function fakeAccountLogin(data) {
   return request('/auth/login', {
     method: 'POST',
@@ -7,7 +7,7 @@ export async function fakeAccountLogin(data) {
   });
 }
 
-//执行退出
+// 执行退出
 export async function logout() {
   return request.post('/auth/logout')
 }

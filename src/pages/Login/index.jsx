@@ -2,15 +2,15 @@ import {
   LockOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { Alert,Tabs } from 'antd';
+import {Tabs } from 'antd';
 import React, { useEffect } from 'react';
-import ProForm, { ProFormCaptcha, ProFormCheckbox, ProFormText } from '@ant-design/pro-form';
-import { connect, history } from 'umi';
+import ProForm, {ProFormText } from '@ant-design/pro-form';
+import { connect } from 'umi';
 import styles from './index.less';
 
 const Login = (props) => {
   useEffect(()=>{
-    //如果已经登陆过，直接去首页
+    // 如果已经登陆过，直接去首页
     const userInfo = localStorage.getItem('userInfo')
     console.log(userInfo);
     // if(userInfo) history.replace('/')
