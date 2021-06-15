@@ -139,7 +139,7 @@ const Index = () => {
           </Button>
       ]}
         />
-        // 模态框隐藏的时候，不挂载组件；模态框显示的时候再挂载组件，这样是为了触发子组件的生命周期
+
       { !isModalVisible ?'' :
       <CreateOrEdit
         isModalVisible={isModalVisible}
@@ -147,7 +147,6 @@ const Index = () => {
         actionRef={actionRef}
         editId={editId}
       />
-
       }
 
     </PageContainer>
